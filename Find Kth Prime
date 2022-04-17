@@ -1,0 +1,49 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int is_prime[1000001]; //for storing prime and composite no.s
+void sieve()
+{
+  int maxN = 1000000;
+  for(int i = 1;i <= maxN;i++)
+  {
+  is_prime[i]=1;
+  }
+  is_prime[0]=0;
+  is_prime[1]=1;
+  for(int i = 2;i*i <= maxN;i++)
+  {
+    if (is_prime) //1 means true 0 means false
+    {
+      for(int j = i*i; j <= maxN; j+=i)
+      {
+        is_prime[j] =0;
+      }
+    }
+  }
+}
+
+int main() {
+	
+	// your code here
+	int i,t,n,c=0;
+	cin>>t;
+	sieve();
+	while(t--)
+	{
+		cin>>n;
+		for(i=0;i<=n*n;i++)
+		{
+			if(is_prime[i]==1)
+			{
+				if(c==n)
+				{
+					cout<<i<<endl;
+				}
+				c++;
+			}
+		}
+	}
+
+	return 0;
+}
